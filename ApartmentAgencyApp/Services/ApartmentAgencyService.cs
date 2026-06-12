@@ -10,6 +10,16 @@ namespace ApartmentAgencyApp.Services
         private readonly IDateCalculationService _dateCalculationService;
         private readonly IApartmentService _apartmentService;
         private readonly IReservationService _reservatonService;
+        private IDateCalculationService calculationService;
+        private IApartmentService apartmentService;
+        private IReservationService reservationService;
+
+        public ApartmentAgencyService(IDateCalculationService calculationService, IApartmentService apartmentService, IReservationService reservationService)
+        {
+            this.calculationService = calculationService;
+            this.apartmentService = apartmentService;
+            this.reservationService = reservationService;
+        }
 
         public void MakeApartmentReservation(ReservationRequest request)
         {

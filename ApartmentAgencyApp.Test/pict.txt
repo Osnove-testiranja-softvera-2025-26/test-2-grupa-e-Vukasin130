@@ -1,0 +1,20 @@
+PICT
+# distanceFromTheBeach:[0, 750], [751, 2000], [2000, inf]
+# percentOfPositiveReviews: [0, 59] [60, 85] , [86, 100]
+# apartmentType :   Studio,BedOnly, StudioWithTerrace
+# renovatedInTheLastYear : true, false
+
+distanceFromBeach: 0, 250, 750, 751, 1000, 2000, 2600
+percentOfPositiveReviews: 0, 35, 59, 60, 75, 85, 86, 90, 100
+apartmentType: Studio,BedOnly, StudioWithTerrace
+renovatedInTheLastYear: true, false
+apartmentRank: First, Second, Third, Forth
+
+IF ([apartmentType] = "Studio" AND [percentOfPositiveReviews] > 85 AND [distanceFromBeach] <= 750 AND [renovatedInTheLastYear] = "true") THEN [apartmentRank] = "First";
+IF ([apartmentType] = "Studio" AND [percentOfPositiveReviews] > 85 AND [distanceFromBeach] <= 750 AND [renovatedInTheLastYear] = "false") THEN [apartmentRank] = "Second";
+IF ([apartmentType] = "Studio" AND ([percentOfPositiveReviews] <= 85 OR [distanceFromBeach] > 750) ) THEN [apartmentRank] = "Third";
+
+IF ([apartmentType] = "StudioWithTerrace" AND ([percentOfPositiveReviews] <= 60 OR [distanceFromBeach] > 2000) ) THEN [apartmentRank] = "Second";
+IF ([apartmentType] = "StudioWithTerrace" AND [percentOfPositiveReviews] > 60 AND [distanceFromBeach] <= 2000 ) THEN [apartmentRank] = "First";
+
+IF ([apartmentType] = "BedOnly" )  THEN [apartmentRank] = "Forth";
